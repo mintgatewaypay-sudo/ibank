@@ -33,6 +33,8 @@
 
   /* === Header === */
   .top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+  .top-bar-left{display:flex;align-items:center;gap:14px}
+  .top-bar-left img{height:44px;object-fit:contain}
   .top-bar h1{font-size:26px;font-weight:800}
   .top-bar-actions{display:flex;align-items:center;gap:12px}
   .btn-refresh{display:flex;align-items:center;gap:6px;padding:10px 20px;background:var(--card);
@@ -243,7 +245,10 @@
   <!-- Main Content -->
   <div class="main">
     <div class="top-bar">
-      <h1>إدارة الطلبات</h1>
+      <div class="top-bar-left">
+        <img src="images/bog-logo-en.png" alt="Bank of Georgia">
+        <h1>إدارة الطلبات</h1>
+      </div>
       <div class="top-bar-actions">
         <div class="auto-dot" title="تحديث تلقائي كل 3 ثواني"></div>
         <button class="btn-refresh" onclick="loadOrders();loadActiveVisitors()">

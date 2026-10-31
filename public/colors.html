@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="uk" dir="ltr">
+<html lang="ka" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Усі кольори</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>ყველა ფერი</title>
 <style>
   :root{--bg:#ffffff;--ink:#141414;--muted:#8a8f98;--line:#ececec;--watchbg:#fff}
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:var(--bg);color:var(--ink);
-    font-family:"Segoe UI",Tahoma,Arial,sans-serif}
+    font-family: "Noto Sans Georgian", "Segoe UI",Tahoma,Arial,sans-serif}
   body{max-width:520px;margin:0 auto;min-height:100vh;box-shadow:0 0 40px rgba(0,0,0,.04)}
 
   header{height:64px;background:#fff;border-bottom:3px solid #00A651;
@@ -40,7 +44,7 @@
   .card-btns{display:flex;flex-direction:column;gap:6px;margin-top:2px}
   .card-btn{
     width:100%;border:none;padding:9px 8px;border-radius:22px;
-    font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;transition:.15s;
+    font-size:12px;font-weight:600;font-family: "Noto Sans Georgian", inherit;cursor:pointer;transition:.15s;
     line-height:1.2;
   }
   .card-btn.pick{background:#00A651;color:#fff}
@@ -61,44 +65,44 @@
 </head>
 <body>
   <header>
-    <img src="images/privatbank-logo.jpg" alt="PrivatBank" style="height:46px">
-    <span class="title">Усі кольори</span>
-    <a class="icon-btn" href="index.html" aria-label="Назад">&#8249;</a>
+    <img src="https://upload.wikimedia.org/wikipedia/en/4/4c/Bank_of_Georgia_logo.png" alt="საქართველოს ბანკი" style="height:46px">
+    <span class="title">ყველა ფერი</span>
+    <a class="icon-btn" href="index.html" aria-label="უკან">&#8249;</a>
   </header>
 
   <div class="intro">
-    <h1>Оберіть ваш улюблений колір</h1>
-    <p>Доступний у 18 ексклюзивних кольорах — натисніть, щоб переглянути</p>
+    <h1>აირჩიეთ თქვენი საყვარელი ფერი</h1>
+    <p>ხელმისაწვდომია 18 ექსკლუზიურ ფერში — დააწკაპუნეთ სანახავად</p>
   </div>
 
   <div class="grid" id="grid"></div>
 
   <div class="continue-bar" id="continueBar">
-    <button class="continue-btn" id="continueBtn">Продовжити</button>
+    <button class="continue-btn" id="continueBtn">გაგრძელება</button>
   </div>
 
 
 <script>
   const watches = [
-    {img:"images/1.jpg",  name:"М'ятний"},
-    {img:"images/2.jpg",  name:"Гірчичний"},
-    {img:"images/3.jpg",  name:"Червоний"},
-    {img:"images/4.jpg",  name:"Фіолетовий"},
-    {img:"images/5.jpg",  name:"Оранжевий"},
-    {img:"images/6.jpg",  name:"Світло-коричневий"},
-    {img:"images/7.jpg",  name:"Темно-оранжевий"},
-    {img:"images/8.jpg",  name:"Небесно-блакитний"},
-    {img:"images/9.jpg",  name:"Військовий зелений"},
-    {img:"images/10.jpg", name:"Золотий з чорним"},
-    {img:"images/11.jpg", name:"Червоний з чорним"},
-    {img:"images/12.jpg", name:"Чорний із зеленим"},
-    {img:"images/13.jpg", name:"Бордовий"},
-    {img:"images/14.jpg", name:"Прозорий"},
-    {img:"images/15.jpg", name:"Карамельний"},
-    {img:"images/16.jpg", name:"Рожеве золото"},
-    {img:"images/17.jpg", name:"Королівський синій"},
-    {img:"images/18.jpg", name:"Темно-синій"},
-    {img:"images/19.jpg", name:"Шоколадний"},
+    {img:"images/1.jpg",  name:"პიტნის"},
+    {img:"images/2.jpg",  name:"მდოგვის ფერი"},
+    {img:"images/3.jpg",  name:"წითელი"},
+    {img:"images/4.jpg",  name:"იისფერი"},
+    {img:"images/5.jpg",  name:"ნარინჯისფერი"},
+    {img:"images/6.jpg",  name:"ღია ყავისფერი"},
+    {img:"images/7.jpg",  name:"მუქი ნარინჯისფერი"},
+    {img:"images/8.jpg",  name:"ცისფერი"},
+    {img:"images/9.jpg",  name:"სამხედრო მწვანე"},
+    {img:"images/10.jpg", name:"ოქროსფერი შავთან"},
+    {img:"images/11.jpg", name:"წითელი შავთან"},
+    {img:"images/12.jpg", name:"შავი მწვანესთან"},
+    {img:"images/13.jpg", name:"ბორდოსფერი"},
+    {img:"images/14.jpg", name:"გამჭვირვალე"},
+    {img:"images/15.jpg", name:"კარამელის ფერი"},
+    {img:"images/16.jpg", name:"ვარდისფერი ოქრო"},
+    {img:"images/17.jpg", name:"სამეფო ლურჯი"},
+    {img:"images/18.jpg", name:"მუქი ლურჯი"},
+    {img:"images/19.jpg", name:"შოკოლადისფერი"},
   ];
   const grid = document.getElementById("grid");
   const bar  = document.getElementById("continueBar");
@@ -110,8 +114,8 @@
        <div class="pic"><img src="${w.img}" alt="${w.name}"></div>
        <div class="name">${w.name}</div>
        <div class="card-btns">
-         <button class="card-btn pick" data-act="pick" data-i="${i}">Обрати колір</button>
-         <button class="card-btn feat" data-act="feat" data-i="${i}">Характеристики</button>
+         <button class="card-btn pick" data-act="pick" data-i="${i}">ფერის არჩევა</button>
+         <button class="card-btn feat" data-act="feat" data-i="${i}">მახასიათებლები</button>
        </div>
      </div>`).join("");
 

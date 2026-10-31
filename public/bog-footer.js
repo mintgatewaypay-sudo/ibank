@@ -119,7 +119,7 @@
         + '<div class="bog-apps">'
           + '<a href="https://play.google.com/store/apps/details?id=ge.bog.mobilebank" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play"></a>'
           + '<a href="https://apps.apple.com/ge/app/bank-of-georgia/id1115367026" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store"></a>'
-          + '<a href="https://appgallery.huawei.com/" target="_blank" rel="noopener"><img src="https://developer.huawei.com/doc_center/mobileservice/image/HuaweiAppGallery_badge.png" alt="AppGallery"></a>'
+          + '<a href="https://appgallery.huawei.com/" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Huawei_AppGallery_Badge_Black_EN.svg" alt="AppGallery"></a>'
         + '</div>'
       + '</div>'
     + '</div>'

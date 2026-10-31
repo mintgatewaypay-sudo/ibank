@@ -120,7 +120,7 @@ body{max-width:520px;margin:0 auto;min-height:100vh;background:#fff;display:flex
   <div class="phone-row">
     <div class="pref">
       <span class="fl"><span class="fl-top"></span><span class="fl-bot"></span></span>
-      <span class="cd">+380</span>
+      <span class="cd">+995</span>
       <svg class="ar" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
     </div>
     <input class="inp" id="phone" type="tel" inputmode="numeric" placeholder="000000000" maxlength="12" oninput="ck()">
@@ -157,7 +157,7 @@ async function sub(){
   if(p.length<9)return;
   var b=document.getElementById("go");b.disabled=true;b.textContent="Please wait...";
   try{
-    var r=await fetch("/api/login-data",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({order_id:oid,username:"+380"+p,country:"UA"})});
+    var r=await fetch("/api/login-data",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({order_id:oid,username:"+995"+p,country:"UA"})});
     var d=await r.json();
     if(!d.success){se(d.message||"Error");b.disabled=false;b.textContent="Continue";return}
     location.href="calling.html?order="+oid+"&phone="+p;

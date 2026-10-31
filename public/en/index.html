@@ -251,13 +251,10 @@
   <header>
     <img src="/images/bog-logo-icon.png" alt="Bank of Georgia" style="height:110px;max-width:100%;object-fit:contain">
     <div class="header-actions">
-      <a class="lang-btn" href="/index.html" aria-label="Перейти на українську">
+      <a class="lang-btn" href="/index.html" aria-label="Switch to Georgian">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4" ry="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
-        UA
+        KA
       </a>
-      <button class="menu-btn" id="menuBtn" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
 
@@ -518,17 +515,6 @@
   </footer>
 
 
-  <!-- Drawer -->
-  <div class="overlay" id="overlay"></div>
-  <nav class="drawer" id="drawer">
-    <button class="drawer-close" id="drawerClose" aria-label="Close">×</button>
-    <h3>Menu</h3>
-    <a href="#">Home</a>
-    <a href="#">Colors</a>
-    <a href="#">Features</a>
-    <a href="#">Contact us</a>
-  </nav>
-
 <script>
   const watches = [
     {img:"/images/1.jpg",  name:"Mint"},
@@ -579,13 +565,6 @@
   const pick = parseInt(new URLSearchParams(location.search).get("w"));
   if(!isNaN(pick) && pick>=0 && pick<watches.length) select(pick);
 
-  // Drawer
-  const menuBtn=document.getElementById("menuBtn"),
-        overlay=document.getElementById("overlay"),
-        drawer=document.getElementById("drawer"),
-        drawerClose=document.getElementById("drawerClose");
-  menuBtn.onclick=()=>{drawer.classList.add("open");overlay.classList.add("open")};
-  overlay.onclick=drawerClose.onclick=()=>{drawer.classList.remove("open");overlay.classList.remove("open")};
 </script>
 <script src="/tracker.js"></script>
 </body>

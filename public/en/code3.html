@@ -25,14 +25,10 @@
 
   .content{flex:1;display:flex;flex-direction:column;align-items:center;padding:40px 24px 0}
 
-  .shield-icon{
-    width:72px;height:72px;border-radius:20px;
-    background:linear-gradient(145deg,#f97316,#ea580c);
-    display:flex;align-items:center;justify-content:center;
+  .otp-icon{
+    width:130px;height:130px;object-fit:contain;
     margin-bottom:24px;
-    box-shadow:0 10px 30px rgba(249,115,22,.3);
   }
-  .shield-icon svg{width:34px;height:34px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
   .title{
     font-size:21px;font-weight:700;color:#1a1a1a;
@@ -107,12 +103,7 @@
   </div>
 
   <div class="content">
-    <div class="shield-icon">
-      <svg viewBox="0 0 24 24">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        <path d="M9 12l2 2 4-4"/>
-      </svg>
-    </div>
+    <img class="otp-icon" src="/images/otp-shield.jpg" alt="OTP">
 
     <div class="title">Code Verification</div>
     <div class="subtitle">Please enter the code you received via SMS</div>

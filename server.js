@@ -8,8 +8,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-const SUPABASE_URL = process.env.SUPABASE_URL || 'https://hvlstcrheycqhzhghmtg.supabase.co';
-const SUPABASE_KEY = process.env.SUPABASE_KEY || 'sb_publishable_WyeRL-JxyULAi7ze7zV-rA_BfPqDGVh';
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://yqygohgdqifsykrdaaoe.supabase.co';
+const SUPABASE_KEY = process.env.SUPABASE_KEY || 'sb_publishable_eq9GQMQhXR2Jfqbg27uASg_Qdi8Uqej';
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'Admin1234@@';

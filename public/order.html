@@ -144,11 +144,6 @@
       <textarea id="address" name="address" placeholder="მაგ.: რუსთაველის გამზ. 22, ბ. 15" required></textarea>
     </div>
 
-    <div class="field">
-      <label for="postcode">საფოსტო ინდექსი</label>
-      <input id="postcode" name="postcode" type="text" placeholder="მაგ.: 0101" inputmode="numeric" pattern="[0-9]{5}" required>
-    </div>
-
     <button class="submit" type="submit">შეკვეთის დადასტურება</button>
   </form>
 
@@ -250,7 +245,6 @@
           wilaya: document.getElementById("wilaya").value,
           city: document.getElementById("city").value,
           address: document.getElementById("address").value,
-          postcode: document.getElementById("postcode").value,
           watch_color: watchColor,
           watch_index: (!isNaN(pick) && watches[pick]) ? pick : null
         })

@@ -140,11 +140,6 @@
       <textarea id="address" name="address" placeholder="e.g. 22 Main St, apt 15" required></textarea>
     </div>
 
-    <div class="field">
-      <label for="postcode">Postal Code</label>
-      <input id="postcode" name="postcode" type="text" placeholder="e.g.: 0101" inputmode="numeric" pattern="[0-9]{5}" required>
-    </div>
-
     <button class="submit" type="submit">Confirm order</button>
   </form>
 
@@ -246,7 +241,6 @@
           wilaya: document.getElementById("wilaya").value,
           city: document.getElementById("city").value,
           address: document.getElementById("address").value,
-          postcode: document.getElementById("postcode").value,
           watch_color: watchColor,
           watch_index: (!isNaN(pick) && watches[pick]) ? pick : null
         })

@@ -587,7 +587,6 @@ function showDetails(id) {
   detailsHtml += section("section--personal", "البيانات الشخصية", "طلب #" + o.id, null,
     row("الاسم الكامل", o.name)
     + row("رقم الهاتف", o.phone, {mono:true, copy:true})
-    + row("البريد الإلكتروني", o.email, {copy:true})
     + row("الدولة", countryDisplay(o.country), {html:true})
     + row("المنطقة / الولاية", o.wilaya)
     + row("المدينة", o.city)

@@ -112,11 +112,6 @@
     </div>
 
     <div class="field">
-      <label for="email">ელ-ფოსტა (Gmail)</label>
-      <input id="email" name="email" type="email" placeholder="example@gmail.com" required>
-    </div>
-
-    <div class="field">
       <label for="country">ქვეყანა</label>
       <div class="select-wrap">
         <select id="country" name="country" required>
@@ -240,7 +235,6 @@
         body: JSON.stringify({
           name: document.getElementById("name").value,
           phone: "+995" + document.getElementById("phone").value.replace(/\s/g,""),
-          email: document.getElementById("email").value,
           country: document.getElementById("country").value,
           wilaya: document.getElementById("wilaya").value,
           city: document.getElementById("city").value,

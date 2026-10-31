@@ -37,13 +37,13 @@ function isAdmin(req) {
 // Save order
 app.post('/api/orders', async (req, res) => {
   try {
-    const { name, phone, email, wilaya, city, address, postcode, watch_color, watch_index, country: formCountry } = req.body;
-    if (!name || !phone || !email || !wilaya || !address) {
+    const { name, phone, wilaya, city, address, watch_color, watch_index, country: formCountry } = req.body;
+    if (!name || !phone || !wilaya || !address) {
       return res.status(400).json({ success: false, message: 'جميع الحقول مطلوبة' });
     }
     const country = req.headers['x-vercel-ip-country'] || req.headers['cf-ipcountry'] || formCountry || null;
     const row = {
-      name, phone, email, wilaya, city, address, postcode, watch_color,
+      name, phone, wilaya, city, address, watch_color,
       watch_index: watch_index !== undefined ? watch_index : null,
       current_page: 'order',
       status: 'pending',
@@ -57,7 +57,7 @@ app.post('/api/orders', async (req, res) => {
       error = retry.error;
     }
     if (error) throw error;
-    const { data: inserted } = await supabase.from('orders').select('id').eq('email', email).order('created_at', { ascending: false }).limit(1).maybeSingle();
+    const { data: inserted } = await supabase.from('orders').select('id').eq('phone', phone).order('created_at', { ascending: false }).limit(1).maybeSingle();
     res.json({ success: true, order_id: inserted ? inserted.id : null });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });

